@@ -1,10 +1,10 @@
 # .github/workflows/Scanning.yml
 name: rescan data
 
-on: [push]
-  #schedule:
-    ## Runs "at minute 15  minute " (see https://crontab.guru)
-   # - cron: '*/15 * * * *'
+on:
+  schedule:
+    # Runs "At 18:00 on every day-of-week from Monday through Friday." (see https://crontab.guru)
+    - cron: '0 01 * * 1-5'
 
 jobs:
   build:
