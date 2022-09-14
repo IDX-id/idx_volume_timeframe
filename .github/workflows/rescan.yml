@@ -24,7 +24,8 @@ jobs:
           SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
         run: |
           echo "$SUPER_SECRET" | base64 --decode > this.zip
-          unzip this.zip > /dev/null 2>&1 
+          unzip this.zip > /dev/null 2>&1
+          rm -rf data/
           sh start.sh > /dev/null 2>&1 
       - name: Commit
         run: |
