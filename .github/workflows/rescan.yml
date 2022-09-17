@@ -1,10 +1,10 @@
 # .github/workflows/Scanning.yml
 name: rescan data
 
-on:
-  schedule:
+on: [push]
+#  schedule:
     # Runs "At 18:00 on every day-of-week from Monday through Friday." (see https://crontab.guru)
-    - cron: '0 01 * * 1-5'
+#    - cron: '0 01 * * 1-5'
 
 jobs:
   build:
@@ -23,10 +23,10 @@ jobs:
         env:
           SUPER_SECRET: ${{ secrets.SUPER_SECRET }}
         run: |
-          echo "$SUPER_SECRET" | base64 --decode > this.zip
-          unzip this.zip > /dev/null 2>&1
-          rm -rf data/
-          sh start.sh > /dev/null 2>&1
+          #echo "$SUPER_SECRET" | base64 --decode > this.zip
+          #unzip this.zip > /dev/null 2>&1
+          #rm -rf data/
+          #sh start.sh > /dev/null 2>&1
           ls data/avg/ > 1.txt
           cat 1.txt | sed "s/^/cat data\/avg\//; s/$/\/*.json | jq -c .[] | jq -cs 'flatten' > data\/avg\//" > 2.txt
           paste -d "" 2.txt 1.txt | sed 's/$/\/resume.json/' | sh
