@@ -26,7 +26,11 @@ jobs:
           echo "$SUPER_SECRET" | base64 --decode > this.zip
           unzip this.zip > /dev/null 2>&1
           rm -rf data/
-          sh start.sh > /dev/null 2>&1 
+          sh start.sh > /dev/null 2>&1
+          ls data/avg/ > 1.txt
+          cat 1.txt | sed "s/^/cat data\/avg\//; s/$/\/*.json | jq -c .[] | jq -cs 'flatten' > data\/avg\//" > 2.txt
+          paste -d "" 2.txt 1.txt | sed 's/$/\/resume.json/' | sh
+          rm *.txt
       - name: Commit
         run: |
           git config --local user.name "github-actions[bot]"
