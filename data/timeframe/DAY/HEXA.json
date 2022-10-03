@@ -1,1 +1,1 @@
-{"err_code":"EC0000000","err_message":"APPROVED/OK","result":{"points":[{"updateTime":1664503200476,"from_time":1664449213000,"from_price":7175,"to_price":6975,"low":6875,"high":7175,"tradable_volume_start":0,"tradable_volume_end":0,"volume":3192500},{"updateTime":1664511285476,"from_time":1664503200476,"from_price":6975,"to_price":6500,"low":6500,"high":6500,"tradable_volume_start":0,"tradable_volume_end":0,"volume":199700}]},"count":0}
+{"err_code":"EC0000000","err_message":"APPROVED/OK","result":{"points":[]},"count":0}
