@@ -1,1 +1,1 @@
-{"err_code":"EC0000000","err_message":"APPROVED/OK","result":{"points":[]},"count":0}
+{"err_code":"EC0000000","err_message":"APPROVED/OK","result":{"points":[{"updateTime":1665462001056,"from_time":1665399605000,"from_price":4340,"to_price":4330,"low":4310,"high":4420,"tradable_volume_start":0,"tradable_volume_end":0,"volume":124747200}]},"count":0}
